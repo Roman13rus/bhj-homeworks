@@ -1,8 +1,20 @@
+
 const rotatorCase = Array.from(document.querySelectorAll('.rotator__case'))
 
 let i = 1
-setInterval(() => {
+let getSpeed = function() {
+    let speed = rotatorCase[i].dataset.speed
+    if (i == rotatorCase[rotatorCase.length - 1]) {
+        i = 0  
+    } else {
+        i++
+    }
+    return speed
+}
+
+let rotate = function() {
     rotatorCase[i].classList.add('rotator__case_active')
+    rotatorCase[i].style.color = rotatorCase[i].dataset.color;
     if (i == 0) {
         rotatorCase[rotatorCase.length - 1].classList.remove('rotator__case_active')
         i += 1
@@ -13,5 +25,5 @@ setInterval(() => {
         rotatorCase[i - 1].classList.remove('rotator__case_active')
         i += 1
     }
-}, 1000);
-
+}
+setInterval(rotate, getSpeed());
