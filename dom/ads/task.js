@@ -1,29 +1,13 @@
 
 const rotatorCase = Array.from(document.querySelectorAll('.rotator__case'))
 
-let i = 1
-let getSpeed = function() {
-    let speed = rotatorCase[i].dataset.speed
-    if (i == rotatorCase[rotatorCase.length - 1]) {
-        i = 0  
-    } else {
-        i++
-    }
-    return speed
-}
+let i = 0
 
-let rotate = function() {
-    rotatorCase[i].classList.add('rotator__case_active')
-    rotatorCase[i].style.color = rotatorCase[i].dataset.color;
-    if (i == 0) {
-        rotatorCase[rotatorCase.length - 1].classList.remove('rotator__case_active')
-        i += 1
-    } else if (i == rotatorCase.length - 1) {
-        rotatorCase[i - 1].classList.remove('rotator__case_active')
-        i = 0
-    } else {
-        rotatorCase[i - 1].classList.remove('rotator__case_active')
-        i += 1
-    }
-}
-setInterval(rotate, getSpeed());
+let id = setTimeout(function rotate() { // запускаем наш stTimeout с интервалом 500мл
+    rotatorCase[i % rotatorCase.length].classList.remove('rotator__case_active')
+    rotatorCase[(i + 1) % rotatorCase.length].classList.add('rotator__case_active')
+    rotatorCase[(i + 1) % rotatorCase.length].style.color = rotatorCase[(i + 1) % rotatorCase.length].dataset.color;
+    let speed = rotatorCase[(i + 1) % rotatorCase.length].dataset.speed
+    i += 1; // тут выполняются действия
+    id = setTimeout(rotate, speed); // замещаем id новым setTimeout который ждет когда выполнится код выше, ждет пол секунды и опять выполняет функцию log
+}, 100);
