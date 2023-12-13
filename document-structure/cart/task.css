@@ -5,7 +5,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5px
 }
+
+
 
 .cart__product {
   position: relative;
@@ -86,6 +89,17 @@ body {
   opacity: 0.8;
 }
 
+.del__product {
+  background: red;
+  padding: 10px 15px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.del__product:hover {
+  opacity: 0.8;
+}
 .product-shadow {
   position: absolute;
 }
