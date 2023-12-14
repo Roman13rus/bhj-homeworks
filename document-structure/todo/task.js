@@ -6,7 +6,10 @@ const btn = form.elements.tasks__add
 
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    let div = document.createElement('div');
+    let task = input.value.trim()
+    console.log(task.length)
+    if (task.length) {
+        let div = document.createElement('div');
         div.className = "task";
         div.innerHTML = `<div class="task__title">${input.value}</div><a href="#" class="task__remove">&times;</a>`;
         taskList.insertAdjacentElement("beforeend", div);
@@ -14,7 +17,7 @@ btn.addEventListener('click', (e) => {
         const delElem = div.querySelector('.task__remove')
         delElem.onclick = function() {
             div.remove()
-        }
-
-})
+        };
+    };
+});
 

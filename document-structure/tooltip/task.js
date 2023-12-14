@@ -15,7 +15,7 @@ tooltip.forEach(function(tool) {
         div.className = "tooltip";
         div.textContent = tool.title;
         div.style.left = left + 'px'; 
-        tool.insertAdjacentElement("beforeend", div);
+        tool.insertAdjacentElement("afterend", div);
         div.classList.add('tooltip_active');
     });
 });
