@@ -39,20 +39,18 @@ if (getUserID()) { // проверка на наличие userID в localstorag
             main.append(dialog);
             dialog.show();
         };
-    
         let formData = new FormData(form);
         xhr.send(formData);
     });
 };
-
 
 function closeElement() {//функция кнопки закрытия формы при неудачных попытках
     let dialog = document.getElementById('newelement');
     dialog.close();
     dialog.remove();
     form.reset();
-}
+};
 
 function getUserID() {//функция извлечения  данных из хранилища
     return localStorage.getItem('userID');
-}
+};
